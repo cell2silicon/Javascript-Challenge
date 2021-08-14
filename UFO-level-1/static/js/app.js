@@ -22,13 +22,32 @@ function alienTable(data) {
         );
     });
 }
-var tableFilter = d3.select("#filter-btn");
 
+// Setting variable for filter table button
+var tableFilter = d3.select("#filter-btn");
+// Filtering data by clicking filter table button
 tableFilter.on("click", dataFilter);
+
+// Filering data by pressing enter button
+// All or any input fields can be entered
 var dateChange = d3.select("#datetime")
 dateChange.on("change", dataFilter)
 
+var cityChange = d3.select("#city")
+cityChange.on("change", dataFilter)
+
+var stateChange = d3.select("#state")
+stateChange.on("change", dataFilter)
+
+var countryChange = d3.select("#country")
+countryChange.on("change", dataFilter)
+
+var shapeChange = d3.select("#shape")
+shapeChange.on("change", dataFilter)
+
+// Setting data filter function
 function dataFilter() {
+    // 
     tableBody.html("")
     filterData = tableData
     date = d3.select("#datetime").property("value")
@@ -37,6 +56,15 @@ function dataFilter() {
     city = d3.select("#city").property("value")
     if(city) {
     filterData = filterData.filter( r => r.city == city )}
+    state = d3.select("#state").property("value")
+    if(state) {
+    filterData = filterData.filter( r => r.state == state )}
+    country = d3.select("#country").property("value")
+    if(country) {
+    filterData = filterData.filter( r => r.country == country )}
+    shape = d3.select("#shape").property("value")
+    if(shape) {
+    filterData = filterData.filter( r => r.shape == shape )}
     alienTable(filterData)
 }
 
