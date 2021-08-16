@@ -30,20 +30,9 @@ tableFilter.on("click", dataFilter);
 
 // Filering data by pressing enter button
 // All or any input fields can be entered
-var dateChange = d3.select("#datetime")
-dateChange.on("change", dataFilter)
+var filterChange = d3.select("#filters")
+filterChange.on("change", dataFilter)
 
-var cityChange = d3.select("#city")
-cityChange.on("change", dataFilter)
-
-var stateChange = d3.select("#state")
-stateChange.on("change", dataFilter)
-
-var countryChange = d3.select("#country")
-countryChange.on("change", dataFilter)
-
-var shapeChange = d3.select("#shape")
-shapeChange.on("change", dataFilter)
 
 // Setting data filter function
 function dataFilter() {
@@ -76,7 +65,7 @@ function dataFilter() {
     shape = d3.select("#shape").property("value")
     if(shape) {
     filterData = filterData.filter( r => r.shape == shape )}
-    
+
     // Invoking function to show filtered data
     alienTable(filterData)
 }
